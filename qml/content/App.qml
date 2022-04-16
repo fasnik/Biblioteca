@@ -29,57 +29,37 @@
 
 import QtQuick
 import QtQuick.Window
+import QtQuick.Controls 6.2
 
-///import io.qt.textproperties
 
-Window {
-    id: window
+Rectangle {
+    id: rectangle
     width: 800
     height: 600
-
     visible: true
-    color: "#8baaaa"
-    title: "Biblioteca"
+    color: "#00ffffff"
+    radius: 0
+    gradient: none.none
 
-
-
-    ScreenLeitor {
-        id: leitorScreen
+    AppMenu {
+        id: leffMenu
         width: 800
         height: 600
         visible: true
 
     }
 
-    ScreenLivros {
-        id: livrosScreen
-        width: 800
-        height: 600
-        visible: false
-    }
-
-    ScreenTransacoes {
-        id: transacoesScreen
-        width: 800
-        height: 600
-        visible: false
-    }
-
     Connections {
         target: backend
-//        conversor de texto para bool
-        function t2b(text){
-            return text === "true" ? true : false
-            }
-//        alterna entre a telas disponíveis
-        function onChangeView(state){
-            leitorScreen.visible=t2b(state[0])
-            livrosScreen.visible=t2b(state[1])
-            transacoesScreen.visible=t2b(state[2])
-        }
+
     }
 
+
 }
+
+
+
+//}
 
 
 
@@ -88,6 +68,6 @@ Window {
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.75}
+    D{i:0;formeditorZoom:0.75;height:600;width:800}
 }
 ##^##*/

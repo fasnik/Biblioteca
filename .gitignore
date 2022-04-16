@@ -1,3 +1,4 @@
 qt_rc.py
 app/qt_rc.py
 qml/icons/
+__pycache__

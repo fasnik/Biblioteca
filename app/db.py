@@ -131,7 +131,7 @@ def create_table_livro_colecao(cursor):
     cursor.execute(
     '''
         CREATE TABLE IF NOT EXISTS LivroColecao
-        (   id_livro int ,
+        (   id_livro int,
             id_colecao int, 
                 FOREIGN KEY(id_livro) 
                 REFERENCES Livro(id_livro),
@@ -184,6 +184,7 @@ try:
     print("----------\n Fim da criação das tabelas \n -----------")
    
     con.close()
+
 except Exception as e:
     print(e)
     print('Não foi possível de conectar ao banco de dados')
