@@ -1,0 +1,126 @@
+@startuml biblioteca
+skinparam{
+    Linetype ORTHO
+}
+
+Entity Leitor {
+    *ID_LEITOR: INT <<PK>>
+    --
+    *MATRICULA: STRING UNIQUE 
+    *NOME: STRING
+    *TURMA: STRING
+    *ENDEREÇO: STRING
+    *ÚLTIMA ATUALIZAÇÃO: DATE
+    FOTO: STRING
+    EMAIL: STRING
+}
+
+Entity Telefone {
+    *ID_TELEFONE: INT <<PK>>
+    --
+    *ID_LEITOR: INT <<FK>>
+    *NUMERO: STRING
+    *TIPO: STRING
+    *CONTATO: STRING
+}
+
+Entity Livro {
+    *ID_LIVRO: INT
+    --
+    *REGISTRO: STRING
+    *TITULO: STRING
+    *VOLUME: STRING
+    *NACIONAL: BOOL
+    *ESTA_EM_PT_BR: BOOL
+    IMAGEM: STRING
+}
+
+Entity Autor{
+    *ID_AUTOR: STRING
+    --
+    *NOME_AUTOR: STRING
+    BIO_AUTOR: STRING
+}
+
+Entity Genero{
+    *ID_GENERO:  INT
+    --
+    *NOME_GENERO: STRING
+    DESCRICAO_GENERO: STRING
+}
+
+Entity Colecao{
+    *ID_COLECAO: INT
+    --
+    *NOME_COLECAO: STRING
+    DESCRICAO_COLECAO: STRING
+}
+
+Entity Editora {
+    *ID_EDITORA: INT
+    --
+    NOME_EDITORA: STRING 
+}
+
+Class Emprestimo <<(R, #ff0000)>> {
+    *ID_EMPRESTIMO: INT
+    --
+    *ID_LEITOR: INT <<FK>>
+    *ID_LIVRO: INT <<FK>>
+    *DATA_RETIRADA: DATE
+    *DATA_PREV_DEVOLUÇÃO: DATE
+    *DATA_DEVOLUÇÃO: DATE
+    *TIPO: ENUM
+    *STATUS: ENUM
+
+}
+
+Class LivroAutor <<(R, #FF0000)>>{
+    ID_LIVRO: INT <<FK>>
+    ID_AUTOR: INT <<FK>
+}
+
+Class LivroGenero <<(R, #FF0000)>>{
+    ID_LIVRO: INT <<FK>> 
+    ID_GENERO: INT <<FK>> 
+}
+
+Class LivroColecao <<(R, #FF0000)>>{
+    ID_LIVRO: INT <<FK>>
+    ID_COLECAO: INT <<FK>>
+}
+
+Class LivroEditora <<(R, #ff0000)>>{
+    ID_LIVRO: (INT FK)
+    ID_EDITORA: (INT FK)
+}
+
+'Relacionamentos
+
+Leitor ||--o{Telefone
+Leitor ||--o{ Emprestimo
+Livro }--{ Emprestimo
+
+Livro }|--|| LivroAutor
+LivroAutor ||--|{ Autor
+
+Livro -- LivroGenero
+LivroGenero }|--o{ Genero
+
+Livro }|--o| LivroColecao
+LivroColecao -- Colecao
+
+Livro -- LivroEditora
+LivroEditora -- Editora
+
+    ' STATUS = {
+        ' 	'EM ESPERA',
+        ' 	'AD HOC',
+        ' 	'LOCADO',
+        ' 	'EM ATRASO',
+        ' 	'CONCLUIDO',
+        ' 	'CONCLUIDO_COM_ATRASO'
+        '
+  '  }
+
+@enduml
