@@ -27,32 +27,67 @@
 **
 ****************************************************************************/
 
-import QtQuick
-import QtQuick.Window
+import QtQuick 2.15
 import QtQuick.Controls 6.2
-
+import Biblioteca 1.0
+import QtQuick.Layouts 6.0
+import "pages"
 
 Rectangle {
     id: rectangle
-    width: 800
-    height: 600
+    width: 1920
+    height: 1080
     visible: true
-    color: "#00ffffff"
+    color: "#ffffff"
     radius: 0
-    gradient: none.none
+    // Constants.width
 
     AppMenu {
         id: leffMenu
-        width: 800
-        height: 600
+        x: 0
+        width: 412
         visible: true
+        color: Constants.transparent
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        anchors.topMargin: 0
 
     }
+
+    StackView {
+        id: stackView
+        x: 524
+        y: -16
+        width: 1332
+        anchors.left: leffMenu.right
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 76
+        anchors.topMargin: 76
+        padding: 60
+        anchors.leftMargin: 92
+        clip: true
+        initialItem:
+            Component {
+                id: initialOnStack
+                Opt_Leitor{
+                }
+            }
+
+    }
+
+
 
     Connections {
         target: backend
 
     }
+
+
+
+
+
+
 
 
 }
@@ -68,6 +103,6 @@ Rectangle {
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.75;height:600;width:800}
+    D{i:0;formeditorZoom:0.25}D{i:1}D{i:2}
 }
 ##^##*/

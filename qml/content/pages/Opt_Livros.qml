@@ -9,92 +9,80 @@ Check out https://doc.qt.io/qtcreator/creator-quick-ui-forms.html for details on
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.0
-
+import Biblioteca 1.0
 
 Rectangle {
     id: rectangle
     width: 500
     height: 600
     visible: true
-    color: "#8baaaa"
-    radius: 0
-    border.color: "#d5000000"
-    border.width: 0
-    state: ""
-    gradient: Gradient {
-        orientation: Gradient.Vertical
-        GradientStop {
-            position: 0
-            color: "#8baaaa"
-        }
-
-        GradientStop {
-            position: 1
-            color: "#ae8b9c"
-        }
-    }
-    transformOrigin: Item.TopLeft
-    rotation: 0
-
-    RowLayout {
-        id: rowLayout
+    color: Constants.transparent
+    ColumnLayout {
+        id: columnLayout
         anchors.fill: parent
-        scale: 1
-        spacing: 0
-        anchors.rightMargin: 20
-        anchors.leftMargin: 20
-        anchors.bottomMargin: 20
-        anchors.topMargin: 15.93
+        Layout.columnSpan: 1
+        Layout.margins: 10
+        Layout.leftMargin: 50
+        Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
+        Layout.preferredHeight: 100
+        Layout.preferredWidth: 200
 
-        ColumnLayout {
-            id: columnLayout
-            Layout.columnSpan: 1
-            Layout.margins: 10
-            Layout.leftMargin: 50
-            Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
-            Layout.preferredHeight: 100
-            Layout.preferredWidth: 200
+        Label {
+            id: lblLeitor
+            text: qsTr("Livros")
+            font.letterSpacing: 6.5
 
-            Label {
-                id: lblLeitor
-                text: qsTr("Livros")
-                
-                horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: Text.AlignVCenter
-                Layout.fillHeight: false
-                Layout.fillWidth: true
-                Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
-
-            }
-
-            Button {
-                id: cadastro_livros
-                text: qsTr("Cadastro")
-                Layout.margins: 40
-                Layout.fillWidth: true
-                Layout.fillHeight: false
-                highlighted: true
-                onClicked: backend.push("pages/CadastroLivro.ui.qml")
-
-            }
-
-            Button {
-                id: atualizacao_livros
-                text: qsTr("Atualizaçao")
-                Layout.margins: 40
-                Layout.fillWidth: true
-                Layout.fillHeight: false
-                highlighted: true
-                onClicked: backend.push("pages/AtualizaLivro.ui.qml")
-
-            }
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            Layout.topMargin: 20
+            font.wordSpacing: 2.1
+            font.bold: true
+            font.pointSize: 15
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+            Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
 
         }
+
+        Button {
+            id: cadastro_livros
+            text: qsTr("Cadastro")
+            font.letterSpacing: 3
+            flat: true
+            Layout.margins: 40
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+            highlighted: true
+            onClicked: backend.push("pages/CadastroLivro.ui.qml")
+
+        }
+
+        Button {
+            id: atualizacao_livros
+            text: qsTr("Atualizaçao")
+            font.letterSpacing: 3
+            flat: true
+            Layout.margins: 40
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+            highlighted: true
+            onClicked: backend.push("pages/AtualizaLivro.ui.qml")
+
+        }
+
     }
+
     Connections{
-    target: backend
+        target: backend
     }
+
 
 }
 
 
+
+/*##^##
+Designer {
+    D{i:0;formeditorZoom:0.5}
+}
+##^##*/

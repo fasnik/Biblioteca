@@ -9,95 +9,62 @@ Check out https://doc.qt.io/qtcreator/creator-quick-ui-forms.html for details on
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.0
+import Biblioteca 1.0
 
 Rectangle {
     id: rectangle
-    width: 500
+    width: 600
     height: 600
     visible: true
-    color: "#8baaaa"
-    radius: 0
-    border.color: "#d5000000"
-    border.width: 0
-    state: ""
-    gradient: Gradient {
-        orientation: Gradient.Vertical
-        GradientStop {
-            position: 0
-            color: "#8baaaa"
-        }
+    color: Constants.transparent
 
-        GradientStop {
-            position: 1
-            color: "#ae8b9c"
-        }
-    }
-    transformOrigin: Item.TopLeft
-    rotation: 0
-
-    RowLayout {
-        id: rowLayout
+    ColumnLayout {
+        id: columnLayout
         anchors.fill: parent
-        scale: 1
-        spacing: 0
-        anchors.rightMargin: 20
-        anchors.leftMargin: 20
-        anchors.bottomMargin: 20
-        anchors.topMargin: 15.93
+        Layout.columnSpan: 1
+        Layout.margins: 10
+        Layout.leftMargin: 50
+        Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
+        Layout.preferredHeight: 100
+        Layout.preferredWidth: 200
 
-        ColumnLayout {
-            id: columnLayout
-            Layout.columnSpan: 1
-            Layout.margins: 10
-            Layout.leftMargin: 50
-            Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
-            Layout.preferredHeight: 100
-            Layout.preferredWidth: 200
-
-            Label {
-                id: label1
-                text: "Transações"
-                horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: Text.AlignVCenter
-                Layout.fillWidth: true
-            }
-
-            Button {
-                id: button
-                text: qsTr("Emprestimo")
-                highlighted: true
-                Layout.margins: 40
-                Layout.fillHeight: false
-                Layout.fillWidth: true
-            }
-
-
-            Button {
-                id: button1
-                text: qsTr("Devoluçao")
-                highlighted: true
-                Layout.margins: 40
-                Layout.fillHeight: false
-                Layout.fillWidth: true
-            }
-
+        Label {
+            id: label1
+            text: "Transações"
+            font.letterSpacing: 6.5
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            Layout.topMargin: 20
+            Layout.fillHeight: true
+            font.wordSpacing: 2.1
+            font.bold: true
+            font.pointSize: 15
+            Layout.fillWidth: true
         }
-    }
 
-    ToolSeparator {
-        id: toolSeparator
-        x: 302
-        width: 5
-        anchors.top: parent.top
-        anchors.bottom: parent.bottom
-        hoverEnabled: false
-        enabled: false
-        spacing: 0
-        bottomPadding: 0
-        topPadding: 0
-        padding: 0
-        anchors.bottomMargin: 4
-        anchors.topMargin: 4
+        Button {
+            id: button
+            text: qsTr("Emprestimo")
+            font.letterSpacing: 3
+            flat: true
+            highlighted: true
+            Layout.margins: 40
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+        }
+
+
+        Button {
+            id: button1
+            text: qsTr("Devoluçao")
+            font.letterSpacing: 3
+            flat: true
+            highlighted: true
+            Layout.margins: 40
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+        }
+
     }
 
 
@@ -105,7 +72,7 @@ Rectangle {
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.75;height:600;width:800}
+    D{i:0;formeditorZoom:0.5;height:600;width:800}D{i:1}
 }
 ##^##*/
 

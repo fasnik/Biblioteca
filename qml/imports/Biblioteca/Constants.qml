@@ -5,6 +5,11 @@ QtObject {
     readonly property int width: 1920
     readonly property int height: 1080
 
+    readonly property int stackWidth: 552
+    readonly property int stackHight: 600
+
+    readonly property color transparent: "#00000000"
+
     property alias fontDirectory: directoryFontLoader.fontDirectory
     property alias relativeFontDirectory: directoryFontLoader.relativeFontDirectory
 

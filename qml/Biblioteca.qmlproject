@@ -7,9 +7,8 @@ Project {
     QmlFiles {
         directory: "content"
     }
-
     QmlFiles {
-        directory: "imports"
+        directory: "content/pages"
     }
 
     JavaScriptFiles {

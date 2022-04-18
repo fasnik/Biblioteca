@@ -13,8 +13,8 @@ Frame {
     id: fr_form
     x: 290
     y: 8
-    width: 592
-    height: 600
+    width: 557
+    height: 550
 
 
     GridLayout {

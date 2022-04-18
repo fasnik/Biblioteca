@@ -1,20 +1,17 @@
-/*
-This is a UI file (.ui.qml) that is intended to be edited in Qt Design Studio only.
-It is supposed to be strictly declarative and only uses a subset of QML. If you edit
-this file manually, you might introduce QML code that is not supported by Qt Design Studio.
-Check out https://doc.qt.io/qtcreator/creator-quick-ui-forms.html for details on .ui.qml files.
-*/
-
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 6.0
+import Biblioteca 1.0
 
 Frame {
     id: fr_form
     x: 290
     y: 8
-    width: 500
-    height: 600
+    width: Constants.stackWidth
+    height: 600 //constants.stackHight
+    bottomPadding: 20
+    topPadding: 20
+    padding: 0
 
 
     GridLayout {
@@ -28,13 +25,12 @@ Frame {
         Label {
             id: label
             text: qsTr("Cadastro de Leitor")
-            anchors.top: parent.top
             font.letterSpacing: 6.5
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
+            Layout.fillWidth: true
+            Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
             anchors.topMargin: 20
-            anchors.horizontalCenterOffset: 0
-            anchors.horizontalCenter: parent.horizontalCenter
             font.bold: true
             font.wordSpacing: 2.1
         }
@@ -58,7 +54,6 @@ Frame {
                 placeholderText: qsTr("Nome")
             }
 
-
             TextField {
                 id: txt_mat
                 transformOrigin: Item.Center
@@ -70,10 +65,6 @@ Frame {
                 placeholderText: qsTr("Matricula")
             }
 
-
-
-
-
             TextField {
                 id: txt_turma
                 transformOrigin: Item.Center
@@ -84,9 +75,6 @@ Frame {
                 Layout.fillWidth: true
                 placeholderText: qsTr("Turma")
             }
-
-
-
 
             TextField {
                 id: txt_endereco
@@ -112,10 +100,6 @@ Frame {
                 placeholderText: qsTr("Telefone")
             }
 
-
-
-
-
             TextField {
                 id: txt_email
                 horizontalAlignment: Text.AlignLeft
@@ -129,16 +113,6 @@ Frame {
                 placeholderText: qsTr("Email")
             }
 
-
-
-
-
-
-
-
-
-
-
             Label {
                 id: lbl_img
                 text: qsTr("Foto")
@@ -147,8 +121,6 @@ Frame {
                 Layout.fillHeight: false
                 Layout.fillWidth: true
             }
-
-
 
             Loader {
                 id: loader_img
@@ -202,26 +174,13 @@ Frame {
                     highlighted: true
                 }
             }
-
-
-
-
-
         }
-
-
-
-
-
-
     }
-
-
 }
-
 
 /*##^##
 Designer {
     D{i:0;formeditorZoom:0.9;height:600;width:500}
 }
 ##^##*/
+

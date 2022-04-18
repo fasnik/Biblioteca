@@ -14,40 +14,26 @@ Rectangle {
     id: rectangle
     visible: true
     clip: true
-    gradient: Gradient {
-        orientation: Gradient.Vertical
-        GradientStop {
-            position: 0
-            color: "#8baaaa"
-        }
+    color: "#0000ffff"
+//    gradient: Gradient {
+//        orientation: Gradient.Vertical
+//        GradientStop {
+//            position: 0
+//            color: "#8baaaa"
+//        }
 
-        GradientStop {
-            position: 1
-            color: "#ae8b9c"
-        }
-    }
+//        GradientStop {
+//            position: 1
+//            color: "#ae8b9c"
+    //        }
+    //    }
 
-
-    ToolSeparator {
-        id: toolSeparator
-        x: 227
-        y: 0
-        anchors.top: parent.top
-        anchors.bottom: parent.bottom
-        rightPadding: 10
-        leftPadding: 10
-        bottomPadding: 10
-        topPadding: 10
-        hoverEnabled: false
-        enabled: false
-    }
 
 
     ColumnLayout {
         anchors.verticalCenter: parent.verticalCenter
-        anchors.left: parent.left
-        spacing: 20
-        anchors.leftMargin: 15
+        anchors.horizontalCenter: parent.horizontalCenter
+        spacing: 10
 
 
         Image {
@@ -55,27 +41,27 @@ Rectangle {
             id: _026bookmark
             source: "images/026-bookmark.svg"
             Layout.columnSpan: 1
-            Layout.rowSpan: 1
+            Layout.rowSpan: 5
             Layout.fillHeight: true
             Layout.fillWidth: true
             rotation: 0
             mirror: false
             mipmap: false
-            sourceSize.height: 50
-            sourceSize.width: 50
+            sourceSize.height: 70
+            sourceSize.width: 100
             fillMode: Image.PreserveAspectFit
         }
 
         Label {
             id: label
             text: "Biblioteca CIEP 368"
-            font.letterSpacing: 3.1
+            font.letterSpacing: 6.5
             horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignBottom
+            verticalAlignment: Text.AlignTop
             Layout.columnSpan: 1
-            Layout.rowSpan: 1
+            Layout.rowSpan: 3
             font.weight: Font.Normal
-            font.bold: false
+            font.bold: true
             Layout.fillHeight: true
             Layout.margins: 10
             Layout.rightMargin: 10
@@ -102,7 +88,7 @@ Rectangle {
             Layout.leftMargin: 10
             Layout.bottomMargin: 10
             Layout.topMargin: 10
-            Layout.fillHeight: true
+            Layout.fillHeight: false
             Layout.fillWidth: true
             onClicked: {
                 stackView.push(Qt.resolvedUrl("pages/Opt_Leitor.qml"))
@@ -121,12 +107,13 @@ Rectangle {
             Layout.leftMargin: 10
             Layout.bottomMargin: 10
             Layout.topMargin: 10
-            Layout.fillHeight: true
+            Layout.fillHeight: false
             Layout.fillWidth: true
             onClicked: {
                 stackView.push(Qt.resolvedUrl("pages/Opt_Livros.qml"))
             }
         }
+
         Button {
             id: btn_transacoes
             text: qsTr("Transaçoes")
@@ -136,9 +123,8 @@ Rectangle {
             Layout.margins: 0
             Layout.rightMargin: 10
             Layout.leftMargin: 10
-            Layout.bottomMargin: 10
             Layout.topMargin: 10
-            Layout.fillHeight: true
+            Layout.fillHeight: false
             Layout.fillWidth: true
             onClicked: {
                 stackView.push(Qt.resolvedUrl("pages/Opt_Transacoes.qml"))
@@ -146,13 +132,7 @@ Rectangle {
         }
     }
 
-    StackView {
-        id: stackView
-        anchors.fill: parent
-        clip: true
-        anchors.leftMargin: 243
-        initialItem: Qt.resolvedUrl("pages/Opt_Leitor.qml")
-    }
+
 
 
     Connections {
@@ -169,6 +149,6 @@ Rectangle {
 
 /*##^##
 Designer {
-    D{i:0;autoSize:true;formeditorZoom:0.75;height:600;width:800}
+    D{i:0;height:1080;width:412}
 }
 ##^##*/

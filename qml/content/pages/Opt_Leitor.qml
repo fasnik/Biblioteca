@@ -14,86 +14,80 @@ import QtQuick.Layouts 1.0
 
 Rectangle {
     id: rectangle
-    width: 500
+    width: 600
     height: 600
     visible: true
-    color: "#8baaaa"
-    radius: 0
-    border.color: "#d5000000"
+    color: "#000baaaa"
     border.width: 0
-    state: ""
-    gradient: Gradient {
-        orientation: Gradient.Vertical
-        GradientStop {
-            position: 0
-            color: "#8baaaa"
-        }
 
-        GradientStop {
-            position: 1
-            color: "#ae8b9c"
-        }
-    }
-    transformOrigin: Item.TopLeft
-    rotation: 0
-
-    RowLayout {
-        id: rowLayout
+    ColumnLayout {
+        id: columnLayout
         anchors.fill: parent
-        scale: 1
-        spacing: 0
-        anchors.rightMargin: 20
-        anchors.leftMargin: 20
-        anchors.bottomMargin: 20
-        anchors.topMargin: 15.93
+        Layout.rightMargin: 0
+        Layout.fillHeight: true
+        Layout.fillWidth: true
+        Layout.columnSpan: 1
+        Layout.margins: 0
+        Layout.leftMargin: 0
+        Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
+        Layout.preferredHeight: 100
+        Layout.preferredWidth: 200
 
-        ColumnLayout {
-            id: columnLayout
-            Layout.columnSpan: 1
-            Layout.margins: 10
-            Layout.leftMargin: 50
-            Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
-            Layout.preferredHeight: 100
-            Layout.preferredWidth: 200
+        Label {
+            id: lblLeitor
+            text: qsTr("Leitor")
+            font.letterSpacing: 6.5
 
-            Label {
-                id: lblLeitor
-                text: qsTr("Leitor")
-                
-                horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: Text.AlignVCenter
-                Layout.fillHeight: false
-                Layout.fillWidth: true
-                Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
-
-            }
-
-            Button {
-                id: button
-                text: qsTr("Cadastro")
-                Layout.margins: 40
-                Layout.fillWidth: true
-                Layout.fillHeight: false
-                highlighted: true
-                onClicked: backend.push("pages/CadastroLeitor.ui.qml")
-
-            }
-
-            Button {
-                id: button1
-                text: qsTr("Atualizaçao")
-                Layout.margins: 40
-                Layout.fillWidth: true
-                Layout.fillHeight: false
-                highlighted: true
-                 onClicked: backend.push("pages/AtualizaLeitor.ui.qml")
-            }
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            Layout.topMargin: 20
+            font.pointSize: 15
+            font.wordSpacing: 2.1
+            font.bold: true
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+            Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
 
         }
+
+        Button {
+            id: button
+            text: qsTr("Cadastro")
+            font.letterSpacing: 3
+            font.underline: false
+            display: AbstractButton.TextOnly
+            font.family: "Roboto"
+            font.bold: false
+            font.italic: false
+            font.pointSize: 11
+            flat: true
+            Layout.margins: 40
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+            highlighted: true
+            onClicked: backend.push("pages/CadastroLeitor.ui.qml")
+
+        }
+
+        Button {
+            id: button1
+            text: qsTr("Atualizaçao")
+            font.letterSpacing: 3
+            font.pointSize: 11
+            flat: true
+            Layout.margins: 40
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+            highlighted: true
+            onClicked: backend.push("pages/AtualizaLeitor.ui.qml")
+        }
+
     }
-        Connections {
-            target: backend
-        }
+
+    Connections {
+        target: backend
+    }
+
 
 
 }
@@ -102,6 +96,6 @@ Rectangle {
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.75;height:600;width:500}
+    D{i:0;formeditorZoom:0.75;height:600;width:500}D{i:1}
 }
 ##^##*/

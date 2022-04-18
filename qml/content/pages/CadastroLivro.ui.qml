@@ -9,15 +9,16 @@ Check out https://doc.qt.io/qtcreator/creator-quick-ui-forms.html for details on
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 6.0
+import Biblioteca 1.0
 
 Frame {
+
     id: fr_form
-    width: 500
-    height: 600
+    width: Constants.stackWidth
+    height: Constants.stackHight
     visible: true
     padding: 15
     clip: true
-
 
     GridLayout {
         id: gridLayout
@@ -34,7 +35,6 @@ Frame {
             wrapMode: Text.NoWrap
             topPadding: 2
             Layout.fillHeight: false
-            anchors.horizontalCenter: parent.horizontalCenter
             Layout.leftMargin: 10
             Layout.fillWidth: true
             Layout.rightMargin: 10
@@ -158,22 +158,30 @@ Frame {
                 }
 
                 ColumnLayout {
-                    Loader {
-                        id: loader_img
-                        Layout.fillWidth: true
-                        Layout.margins: 1
-                        Layout.preferredHeight: 38
+                    Layout.fillHeight: true
+                    Layout.fillWidth: true
+                    Button {
+                        id: folder_btn
                         Layout.fillHeight: true
-                        Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
-                        Layout.preferredWidth: 70
+                        Layout.fillWidth: true
+                        display: AbstractButton.IconOnly
+                        flat: true
+
                         Image {
                             id: _067folder
-                            anchors.verticalCenter: parent.verticalCenter
-                            source: "images/067-folder.svg"
-                            sourceSize.width: 10
-                            anchors.horizontalCenter: parent.horizontalCenter
+                            anchors.fill: parent
+                            source: "../../icons/PNG/067-folder.png"
+                            Layout.columnSpan: 1
+                            Layout.fillHeight: true
+                            Layout.fillWidth: true
+                            sourceSize.width: 40
                             sourceSize.height: 20
                             fillMode: Image.PreserveAspectFit
+                        }
+
+                        Connections {
+                            target: folder_btn
+                            onClicked: backend.insertFile()
                         }
                     }
 
@@ -182,9 +190,10 @@ Frame {
                         text: qsTr("Foto")
                         horizontalAlignment: Text.AlignHCenter
                         verticalAlignment: Text.AlignVCenter
-                        Layout.margins: 1
+                        Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+                        Layout.margins: 0
                         Layout.fillWidth: true
-                        Layout.fillHeight: false
+                        Layout.fillHeight: true
                     }
                 }
                 Layout.topMargin: 2
@@ -241,7 +250,7 @@ Frame {
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.75;height:530;width:500}D{i:1}
+    D{i:0;formeditorZoom:0.75;height:530;width:500}
 }
 ##^##*/
 
