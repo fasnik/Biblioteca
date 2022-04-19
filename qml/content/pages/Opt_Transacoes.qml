@@ -13,20 +13,12 @@ import Biblioteca 1.0
 
 Rectangle {
     id: rectangle
-    width: 600
-    height: 600
     visible: true
     color: Constants.transparent
 
     ColumnLayout {
         id: columnLayout
         anchors.fill: parent
-        Layout.columnSpan: 1
-        Layout.margins: 10
-        Layout.leftMargin: 50
-        Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
-        Layout.preferredHeight: 100
-        Layout.preferredWidth: 200
 
         Label {
             id: label1

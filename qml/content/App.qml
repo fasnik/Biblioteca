@@ -35,48 +35,51 @@ import "pages"
 
 Rectangle {
     id: rectangle
-    width: 1920
-    height: 1080
     visible: true
     color: "#ffffff"
-    radius: 0
-    // Constants.width
 
-    AppMenu {
-        id: leffMenu
-        x: 0
-        width: 412
-        visible: true
-        color: Constants.transparent
-        anchors.top: parent.top
-        anchors.bottom: parent.bottom
-        anchors.topMargin: 0
 
-    }
+    GridLayout {
+        id: gridLayout
+        anchors.fill: parent
+        columnSpacing: 20
+        rows: 1
+        columns: 2
 
-    StackView {
-        id: stackView
-        x: 524
-        y: -16
-        width: 1332
-        anchors.left: leffMenu.right
-        anchors.top: parent.top
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 76
-        anchors.topMargin: 76
-        padding: 60
-        anchors.leftMargin: 92
-        clip: true
-        initialItem:
-            Component {
+        AppMenu {
+            id: leffMenu
+            color: Constants.transparent
+            Layout.preferredWidth: 280
+            Layout.rowSpan: 1
+            Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+            Layout.fillWidth: false
+            Layout.fillHeight: true
+
+
+        }
+
+        StackView {
+            id: stackView
+            Layout.rightMargin: 0
+            Layout.margins: 0
+            Layout.rowSpan: 1
+            Layout.columnSpan: 1
+            Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+            clip: true
+            initialItem:
+                Component {
                 id: initialOnStack
                 Opt_Leitor{
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.horizontalCenter: parent.horizontalCenter
+
                 }
             }
 
+        }
     }
-
-
 
     Connections {
         target: backend
@@ -90,19 +93,13 @@ Rectangle {
 
 
 
+
+
+
 }
-
-
-
-//}
-
-
-
-
-
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.25}D{i:1}D{i:2}
+    D{i:0;autoSize:true;formeditorZoom:0.25;height:600;width:800}D{i:1}
 }
 ##^##*/

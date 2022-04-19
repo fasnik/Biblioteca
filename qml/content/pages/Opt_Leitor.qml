@@ -14,24 +14,12 @@ import QtQuick.Layouts 1.0
 
 Rectangle {
     id: rectangle
-    width: 600
-    height: 600
     visible: true
     color: "#000baaaa"
-    border.width: 0
 
     ColumnLayout {
         id: columnLayout
         anchors.fill: parent
-        Layout.rightMargin: 0
-        Layout.fillHeight: true
-        Layout.fillWidth: true
-        Layout.columnSpan: 1
-        Layout.margins: 0
-        Layout.leftMargin: 0
-        Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
-        Layout.preferredHeight: 100
-        Layout.preferredWidth: 200
 
         Label {
             id: lblLeitor
@@ -96,6 +84,6 @@ Rectangle {
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.75;height:600;width:500}D{i:1}
+    D{i:0;formeditorZoom:0.25;height:600;width:500}
 }
 ##^##*/
