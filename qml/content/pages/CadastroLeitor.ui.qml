@@ -25,6 +25,7 @@ Item{
                 font.letterSpacing: 6.5
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
+                Layout.columnSpan: 1
                 Layout.fillHeight: true
                 Layout.fillWidth: true
                 Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
@@ -34,6 +35,7 @@ Item{
 
             ColumnLayout {
                 id: col
+                Layout.columnSpan: 1
                 Layout.margins: 10
                 Layout.fillHeight: true
                 Layout.fillWidth: true
@@ -42,9 +44,10 @@ Item{
                 TextField {
                     id: txt_nome
                     horizontalAlignment: Text.AlignLeft
+                    Layout.columnSpan: 1
                     transformOrigin: Item.Center
                     Layout.topMargin: 1
-                    Layout.fillHeight: false
+                    Layout.fillHeight: true
                     Layout.rightMargin: 10
                     Layout.leftMargin: 10
                     Layout.fillWidth: true
@@ -53,9 +56,10 @@ Item{
 
                 TextField {
                     id: txt_mat
+                    Layout.columnSpan: 1
                     transformOrigin: Item.Center
                     Layout.topMargin: 1
-                    Layout.fillHeight: false
+                    Layout.fillHeight: true
                     Layout.rightMargin: 10
                     Layout.leftMargin: 10
                     Layout.fillWidth: true
@@ -64,9 +68,10 @@ Item{
 
                 TextField {
                     id: txt_turma
+                    Layout.columnSpan: 1
                     transformOrigin: Item.Center
                     Layout.topMargin: 1
-                    Layout.fillHeight: false
+                    Layout.fillHeight: true
                     Layout.rightMargin: 10
                     Layout.leftMargin: 10
                     Layout.fillWidth: true
@@ -75,9 +80,10 @@ Item{
 
                 TextField {
                     id: txt_endereco
+                    Layout.columnSpan: 1
                     transformOrigin: Item.Center
                     Layout.topMargin: 1
-                    Layout.fillHeight: false
+                    Layout.fillHeight: true
                     Layout.rightMargin: 10
                     Layout.leftMargin: 10
                     Layout.fillWidth: true
@@ -87,10 +93,11 @@ Item{
                 TextField {
                     id: txt_tel
                     horizontalAlignment: Text.AlignLeft
+                    Layout.columnSpan: 1
                     Layout.rightMargin: 10
                     Layout.leftMargin: 10
                     transformOrigin: Item.Center
-                    Layout.fillHeight: false
+                    Layout.fillHeight: true
                     Layout.fillWidth: true
                     Layout.margins: 0
                     Layout.topMargin: 1
@@ -100,40 +107,26 @@ Item{
                 TextField {
                     id: txt_email
                     horizontalAlignment: Text.AlignLeft
+                    Layout.columnSpan: 1
                     transformOrigin: Item.Center
                     Layout.topMargin: 1
                     Layout.rightMargin: 10
                     Layout.leftMargin: 10
-                    Layout.fillHeight: false
+                    Layout.fillHeight: true
                     Layout.fillWidth: true
                     Layout.margins: 0
                     placeholderText: qsTr("Email")
                 }
 
-                Label {
-                    id: lbl_img
+                Button {
+                    id: button
                     text: qsTr("Foto")
-                    horizontalAlignment: Text.AlignHCenter
-                    Layout.margins: 1
-                    Layout.fillHeight: false
+                    Layout.columnSpan: 1
+                    Layout.fillHeight: true
                     Layout.fillWidth: true
                 }
+            }
 
-               Image {
-                        id: _067folder
-                        source: "../../icons/PNG/011-user.png"
-                        Layout.minimumHeight: 50
-                        Layout.minimumWidth: 50
-                        Layout.preferredHeight: 50
-                        Layout.preferredWidth: 50
-                        sourceSize.height: 0
-                        sourceSize.width: 0
-                        Layout.fillHeight: false
-                        Layout.fillWidth: true
-                        fillMode: Image.PreserveAspectFit
-
-                }
-        }
             RowLayout {
                 id: btns_row
                 Layout.alignment: Qt.AlignLeft | Qt.AlignBaseline
@@ -143,8 +136,7 @@ Item{
                 Layout.columnSpan: 1
                 Layout.fillWidth: true
                 spacing: 1
-                layoutDirection: Qt.RightToLeft
-
+                layoutDirection: Qt.LeftToRight
 
                 Button {
                     id: btn_cancel
@@ -170,6 +162,10 @@ Item{
                     Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                     highlighted: true
                 }
+
+
+
+
             }
         }
     }

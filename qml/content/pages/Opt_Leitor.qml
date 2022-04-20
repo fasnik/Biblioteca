@@ -39,7 +39,20 @@ Rectangle {
         }
 
         Button {
-            id: button
+            id: busca_leitor
+            text: qsTr("Busca")
+            font.letterSpacing: 3
+            font.pointSize: 11
+            flat: true
+            Layout.margins: 40
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+            highlighted: true
+            onClicked: backend.push("pages/BuscaLeitor.ui.qml")
+        }
+
+        Button {
+            id: cadastro_leitor
             text: qsTr("Cadastro")
             font.letterSpacing: 3
             font.underline: false
@@ -57,18 +70,6 @@ Rectangle {
 
         }
 
-        Button {
-            id: button1
-            text: qsTr("Atualizaçao")
-            font.letterSpacing: 3
-            font.pointSize: 11
-            flat: true
-            Layout.margins: 40
-            Layout.fillWidth: true
-            Layout.fillHeight: true
-            highlighted: true
-            onClicked: backend.push("pages/AtualizaLeitor.ui.qml")
-        }
 
     }
 
@@ -84,6 +85,6 @@ Rectangle {
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.25;height:600;width:500}
+    D{i:0;height:600;width:500}
 }
 ##^##*/

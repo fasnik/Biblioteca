@@ -18,9 +18,10 @@ Item {
             rows: 4
             columns: 1
 
+
             Label {
                 id: label
-                text: qsTr("Cadastro de Leitor")
+                text: qsTr("Busca de Leitor")
                 font.letterSpacing: 6.5
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
@@ -29,6 +30,17 @@ Item {
                 Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                 font.bold: true
                 font.wordSpacing: 2.1
+            }
+
+
+            Label {
+                id: label1
+                text: qsTr("digite ao menos um dos campos a seguir para realizar a busca")
+                horizontalAlignment: Text.AlignRight
+                font.italic: true
+                font.pointSize: 8
+                Layout.fillHeight: false
+                Layout.fillWidth: true
             }
 
             ColumnLayout {
@@ -71,52 +83,8 @@ Item {
                     Layout.fillWidth: true
                     placeholderText: qsTr("Turma")
                 }
-
-                TextField {
-                    id: txt_endereco
-                    transformOrigin: Item.Center
-                    Layout.topMargin: 1
-                    Layout.fillHeight: true
-                    Layout.rightMargin: 10
-                    Layout.leftMargin: 10
-                    Layout.fillWidth: true
-                    placeholderText: qsTr("Endereço")
-                }
-
-                TextField {
-                    id: txt_tel
-                    horizontalAlignment: Text.AlignLeft
-                    Layout.rightMargin: 10
-                    Layout.leftMargin: 10
-                    transformOrigin: Item.Center
-                    Layout.fillHeight: true
-                    Layout.fillWidth: true
-                    Layout.margins: 0
-                    Layout.topMargin: 1
-                    placeholderText: qsTr("Telefone")
-                }
-
-                TextField {
-                    id: txt_email
-                    horizontalAlignment: Text.AlignLeft
-                    transformOrigin: Item.Center
-                    Layout.topMargin: 1
-                    Layout.rightMargin: 10
-                    Layout.leftMargin: 10
-                    Layout.fillHeight: true
-                    Layout.fillWidth: true
-                    Layout.margins: 0
-                    placeholderText: qsTr("Email")
-                }
-
-                Button {
-                    id: button
-                    text: qsTr("Foto")
-                    flat: false
-                    highlighted: false
-                    Layout.fillWidth: true
-                }
             }
+
 
             RowLayout {
                 id: btns_row
@@ -129,8 +97,8 @@ Item {
 
                 Button {
                     id: btn_cancel
-                    text: qsTr("Cancelar")
-                    Layout.fillHeight: true
+                    text: qsTr("Voltar")
+                    Layout.fillHeight: false
                     Layout.fillWidth: true
                     Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                     highlighted: true
@@ -140,23 +108,24 @@ Item {
                 Button {
                     id: btn_clean
                     text: qsTr("Limpar")
-                    Layout.fillHeight: true
+                    Layout.fillHeight: false
                     Layout.fillWidth: true
                     Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                     highlighted: true
                 }
                 Button {
                     id: btn_save
-                    text: qsTr("Salvar")
+                    text: qsTr("Buscar")
                     Layout.rightMargin: 0
                     Layout.leftMargin: 0
-                    Layout.fillHeight: true
+                    Layout.fillHeight: false
                     Layout.margins: 0
                     Layout.fillWidth: true
                     Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                     highlighted: true
                 }
             }
+
 
         }
     }

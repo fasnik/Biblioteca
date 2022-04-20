@@ -37,6 +37,19 @@ Rectangle {
         }
 
         Button {
+            id: busca_livro
+            text: qsTr("Busca")
+            font.letterSpacing: 3
+            flat: true
+            Layout.margins: 40
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+            highlighted: true
+            onClicked: backend.push("pages/BuscaLivro.ui.qml")
+
+        }
+
+        Button {
             id: cadastro_livros
             text: qsTr("Cadastro")
             font.letterSpacing: 3
@@ -49,18 +62,6 @@ Rectangle {
 
         }
 
-        Button {
-            id: atualizacao_livros
-            text: qsTr("Atualizaçao")
-            font.letterSpacing: 3
-            flat: true
-            Layout.margins: 40
-            Layout.fillWidth: true
-            Layout.fillHeight: true
-            highlighted: true
-            onClicked: backend.push("pages/AtualizaLivro.ui.qml")
-
-        }
 
     }
 
@@ -75,6 +76,6 @@ Rectangle {
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.5}
+    D{i:0;autoSize:true;formeditorZoom:0.5;height:480;width:640}
 }
 ##^##*/
