@@ -4,6 +4,18 @@ import QtQuick.Layouts 6.0
 import Biblioteca 1.0
 
 Item {
+
+    Dialog {
+        id: search_dialog
+        width: 500
+        height: 500
+        title: "Resultado da Busca"
+        standardButtons: Dialog.Ok
+
+
+            BuscaLeitorView{}
+        }
+
     Frame {
         id: fr_form
         anchors.fill: parent
@@ -18,20 +30,18 @@ Item {
             rows: 4
             columns: 1
 
-
             Label {
                 id: label
                 text: qsTr("Busca de Leitor")
                 font.letterSpacing: 6.5
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
-                Layout.fillHeight: true
+                Layout.fillHeight: false
                 Layout.fillWidth: true
                 Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                 font.bold: true
                 font.wordSpacing: 2.1
             }
-
 
             Label {
                 id: label1
@@ -55,7 +65,7 @@ Item {
                     horizontalAlignment: Text.AlignLeft
                     transformOrigin: Item.Center
                     Layout.topMargin: 1
-                    Layout.fillHeight: true
+                    Layout.fillHeight: false
                     Layout.rightMargin: 10
                     Layout.leftMargin: 10
                     Layout.fillWidth: true
@@ -66,7 +76,7 @@ Item {
                     id: txt_mat
                     transformOrigin: Item.Center
                     Layout.topMargin: 1
-                    Layout.fillHeight: true
+                    Layout.fillHeight: false
                     Layout.rightMargin: 10
                     Layout.leftMargin: 10
                     Layout.fillWidth: true
@@ -77,7 +87,7 @@ Item {
                     id: txt_turma
                     transformOrigin: Item.Center
                     Layout.topMargin: 1
-                    Layout.fillHeight: true
+                    Layout.fillHeight: false
                     Layout.rightMargin: 10
                     Layout.leftMargin: 10
                     Layout.fillWidth: true
@@ -85,50 +95,29 @@ Item {
                 }
             }
 
-
-            RowLayout {
-                id: btns_row
-                Layout.alignment: Qt.AlignLeft | Qt.AlignBaseline
+            Button {
+                id: btn_search
+                text: qsTr("Buscar")
+                Layout.columnSpan: 1
+                Layout.rightMargin: 0
+                Layout.leftMargin: 0
+                Layout.fillHeight: false
                 Layout.margins: 0
-                Layout.fillHeight: true
                 Layout.fillWidth: true
-                spacing: 1
-                layoutDirection: Qt.LeftToRight
+                highlighted: true
 
-                Button {
-                    id: btn_cancel
-                    text: qsTr("Voltar")
-                    Layout.fillHeight: false
-                    Layout.fillWidth: true
-                    Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
-                    highlighted: true
-                }
-
-
-                Button {
-                    id: btn_clean
-                    text: qsTr("Limpar")
-                    Layout.fillHeight: false
-                    Layout.fillWidth: true
-                    Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
-                    highlighted: true
-                }
-                Button {
-                    id: btn_save
-                    text: qsTr("Buscar")
-                    Layout.rightMargin: 0
-                    Layout.leftMargin: 0
-                    Layout.fillHeight: false
-                    Layout.margins: 0
-                    Layout.fillWidth: true
-                    Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
-                    highlighted: true
+                Connections {
+                    target: btn_search
+                    function onClicked() {
+                        //                        backend.search_leitores(
+                        //                                    [txt_nome.text, txt_mat.text, txt_turma.text])
+                        search_dialog.open()
+                    }
                 }
             }
-
-
         }
     }
+
 
 
     /*##^##

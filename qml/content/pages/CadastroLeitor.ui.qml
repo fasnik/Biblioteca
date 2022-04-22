@@ -1,9 +1,24 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
+import QtQuick.Dialogs
 import QtQuick.Layouts 6.0
-import Biblioteca 1.0
 
-Item{
+Item {
+
+    FileDialog {
+        id: dialog
+    }
+    Dialog {
+        id: notify
+        title: "Confirmação"
+        modal: true
+        standardButtons: Dialog.Ok
+        Text {
+            id: txt_notify
+            text: qsTr("Cadastro Realizado com sucesso")
+
+        }
+    }
     Frame {
         id: fr_form
         anchors.fill: parent
@@ -11,7 +26,6 @@ Item{
         anchors.leftMargin: 10
         anchors.bottomMargin: 10
         anchors.topMargin: 10
-
 
         GridLayout {
             id: gridLayout
@@ -118,12 +132,34 @@ Item{
                     placeholderText: qsTr("Email")
                 }
 
-                Button {
-                    id: button
-                    text: qsTr("Foto")
-                    Layout.columnSpan: 1
+                RowLayout {
+                    id: rowLayout
+                    width: 100
+                    height: 100
                     Layout.fillHeight: true
                     Layout.fillWidth: true
+
+                    TextField {
+                        id: txt_foto
+                        Layout.fillHeight: true
+                        Layout.fillWidth: true
+                        placeholderText: qsTr("Foto")
+                    }
+
+                    Button {
+                        id: btn_foto
+                        text: qsTr("...")
+                        Layout.columnSpan: 1
+                        Layout.fillHeight: false
+                        Layout.fillWidth: false
+
+                        Connections {
+                            target: btn_foto
+                            function onClicked() {
+                                dialog.open()
+                            }
+                        }
+                    }
                 }
             }
 
@@ -144,6 +180,33 @@ Item{
                     Layout.fillWidth: true
                     Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                     highlighted: true
+
+                    Connections {
+                        target: btn_cancel
+                        function onClicked() {
+                            console.log("clicked")
+                        }
+                    }
+                }
+
+                Button {
+                    id: btn_clean
+                    text: qsTr("Limpar")
+                    Layout.fillWidth: true
+                    Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+                    highlighted: true
+
+                    Connections {
+                        target: btn_clean
+                        function onClicked() {
+                            txt_email.text = ""
+                            txt_endereco.text = ""
+                            txt_mat.text = ""
+                            txt_nome.text = ""
+                            txt_tel.text = ""
+                            txt_turma.text = ""
+                        }
+                    }
                 }
 
                 Button {
@@ -153,27 +216,32 @@ Item{
                     Layout.fillWidth: true
                     Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                     highlighted: true
+
+                    Connections {
+                        target: btn_save
+                        function onClicked() {
+
+                            backend.insertLeitor(
+                                        [txt_mat.text, txt_nome.text, txt_turma.text, txt_endereco.text, txt_foto.text, txt_email.text])
+                            notify.open()
+                        }
+                    }
                 }
-
-                Button {
-                    id: btn_clean
-                    text: qsTr("Limpar")
-                    Layout.fillWidth: true
-                    Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
-                    highlighted: true
-                }
-
-
-
-
             }
         }
     }
+
+    Connections {
+        target: dialog
+        function onAccepted() {
+            txt_foto.text = dialog.currentFile
+        }
+    }
+
 
     /*##^##
 Designer {
     D{i:0;formeditorZoom:0.9;height:600;width:500}
 }
 ##^##*/
-
 }
