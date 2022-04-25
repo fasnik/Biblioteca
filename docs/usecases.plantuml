@@ -1,0 +1,16 @@
+@startuml
+
+'Diagramas de Use Cases
+
+'Atores
+:Leitor:
+:Livro:
+
+
+'Use Cases
+
+(Emprestimo)
+(Cadastro Leitor)
+(Cadastro Livro)
+
+@enduml

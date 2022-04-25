@@ -16,7 +16,7 @@ ListView {
     focus: true
     model: model_leitor
     delegate: ItemDelegate {
-        text: nome + " |" + matricula
+        text: id + " |" + nome + " |" + matricula
         anchors.left: parent.left
         anchors.right: parent.right
         font.letterSpacing: 0.5

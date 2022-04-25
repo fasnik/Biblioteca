@@ -1,9 +1,10 @@
 import sqlite3
-from traceback import print_tb
 class DB:
     def __init__(self) -> None:
-        self.con = sqlite3.connect('biblioteca.db')
+        self.name = 'biblioteca.db'
+        self.con = sqlite3.connect(self.name)
         self. cur = self.con.cursor()
+        self.create_all_tables()
 
 
     # CREATE METHODS
@@ -11,7 +12,7 @@ class DB:
         self.cur.execute(
         '''
             CREATE TABLE IF NOT EXISTS Leitor (   
-                id_leitor int PRIMARY KEY,
+                id_leitor INTEGER PRIMARY KEY AUTOINCREMENT,
                 matricula text UNIQUE,
                 nome text,
                 turma text,
@@ -26,7 +27,7 @@ class DB:
         self.cur.execute(
         '''
             CREATE TABLE IF NOT EXISTS  Livro(   
-                id_livro int PRIMARY KEY,
+                id_livro INTEGER PRIMARY KEY AUTOINCREMENT,
                 registro text,
                 titulo text,
                 volume text,
@@ -40,7 +41,7 @@ class DB:
         self.cur.execute(
         '''
             CREATE TABLE IF NOT EXISTS Telefone(   
-                id_telefone int PRIMARY KEY,
+                id_telefone INTEGER PRIMARY KEY AUTOINCREMENT,
                 id_leitor int, 
                 numero text,
         
@@ -55,7 +56,7 @@ class DB:
         self.cur.execute(
         '''
             CREATE TABLE IF NOT EXISTS Emprestimo(  
-                id_emprestimo int PRIMARY KEY,
+                id_emprestimo INTEGER PRIMARY KEY AUTOINCREMENT,
                 id_leitor int,
                 id_livro int,
                 data_retirada text,
@@ -73,7 +74,7 @@ class DB:
         self.cur.execute(
         '''
             CREATE TABLE IF NOT EXISTS Autor(  
-                id_autor int PRIMARY KEY,
+                id_autor INTEGER PRIMARY KEY AUTOINCREMENT,
                 nome_autor text,
                 bio_autor text
         )
@@ -84,7 +85,7 @@ class DB:
         self.cur.execute(
         '''
             CREATE TABLE IF NOT EXISTS Genero(  
-                id_genero int PRIMARY KEY,
+                id_genero INTEGER PRIMARY KEY AUTOINCREMENT,
                 nome_genero text,
                 descricao_genero text
         )
@@ -95,7 +96,7 @@ class DB:
         self.cur.execute(
         '''
             CREATE TABLE IF NOT EXISTS Colecao(  
-                id_colecao int PRIMARY KEY,
+                id_colecao INTEGER PRIMARY KEY AUTOINCREMENT,
                 nome_colecao text,
                 descricao_colecao text
         )
@@ -106,7 +107,7 @@ class DB:
         self.cur.execute(
         '''
             CREATE TABLE IF NOT EXISTS Editora(  
-                id_editora int PRIMARY KEY,
+                id_editora INTEGER PRIMARY KEY AUTOINCREMENT,
                 nome_editora text    
             )
         ''')
@@ -161,24 +162,24 @@ class DB:
         )
         ''')
         print("Tabela LivroEditora criada")
-    def create_all_tables(self,cur):
-        self.create_table_leitor(cur)
-        self.create_table_livro(cur)
-        self.create_table_telefone(cur)
-        self.create_table_emprestimo(cur)
-        self.create_table_autor(cur)
-        self.create_table_genero(cur)
-        self.create_table_colecao(cur)
-        self.create_table_editora(cur)
-        self.create_table_livro_autor(cur)
-        self.create_table_livro_genero(cur)
-        self.create_table_livro_colecao(cur)
-        self.create_table_editora(cur)
+    def create_all_tables(self):
+        self.create_table_leitor()
+        self.create_table_livro()
+        self.create_table_telefone()
+        self.create_table_emprestimo()
+        self.create_table_autor()
+        self.create_table_genero()
+        self.create_table_colecao()
+        self.create_table_editora()
+        self.create_table_livro_autor()
+        self.create_table_livro_genero()
+        self.create_table_livro_colecao()
+        self.create_table_editora()
         print("----------\n Fim da criação das tabelas \n -----------")
 
     # SHOW METHODS
     def show_tables(self):
-        tables = cursor.execute("""
+        tables = self.cur.execute("""
         SELECT name 
         FROM sqlite_master
         WHERE type ='table' 
@@ -205,8 +206,10 @@ class DB:
    # INSERT METHODS
     def insert_leitor(self, leitor):
         self.cur.execute(
-        '''tur
-            INSERT INTO Leitor (matricula, nome, turma, endereco, foto, email) VALUES (?,?,?,?,?,?)
+        '''
+            INSERT INTO Leitor 
+            (matricula, nome, turma, endereco, foto, email) 
+            VALUES (?,?,?,?,?,?)
         ''', leitor)
         self.con.commit()
         return self.cur.lastrowid

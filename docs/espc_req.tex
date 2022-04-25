@@ -1,0 +1,87 @@
+\documentclass[a4paper,10pt]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{makeidx}
+\usepackage{listofitems}
+
+
+\title{Especificação de Requisitos}
+\author{Felipe Augusto}
+\makeindex
+
+\newcounter{requirement}
+
+\begin{document}
+
+
+\newcommand{\requirement}
+    [1]
+    {
+%     \setsepchar{, }
+    \readlist\args{#1}
+    \par \medskip \noindent \stepcounter{requirement} 
+    \textbf{Requisito \# \therequirement.}
+    \par ReqType \args[1], Event/UseCase \args[2], Description \args[3], 
+    Rationale \args[4], Originator \args[5], Fit Criterion \args[6], 
+    Customer Satisfaction \args[7],
+    Customer Dissatisfaction \args[8], 
+    Priority \args[9], Dependencies \args[10],
+    Conflicts \args[11], Supporting Materials \args[12], History \args[13]}
+
+\maketitle
+\tableofcontents
+% \listoffigures
+% \listoftables
+
+\chapter{Introdução}
+
+
+teste newcommand
+\requirement{Funcional,2,3,4,5,6,7,8,9,10,11,12,sdfsdfsdfds}
+\requirement{Não Funcional,2,3,4,5,6,7,8,9,10,11,12,sdfsdfsdfds}
+\requirement{1,2,3,4,5,6,7,8,9,10,11,12,sdfsdfsdfds}
+
+
+\section{Objetivo}
+\section{Escopo}
+Project Scope
+
+    The Purpose of the Project: This section \index{section} deals with the fundamental reason your client asked you to build a new product. That is, it describes the business problem the client faces and explains how the product is intended to solve the problem.
+    Stakeholders: This section describes the stakeholders—the people who have an interest in the product. It is worth your while to spend enough time to accurately determine and describe these people as the penalty for not knowing who they are can be very high.
+    Relevant Facts and Assumptions: This section describes external factors that have an effect on the product but are not covered by other sections in the requirements template. They are not necessarily translated into requirements but might be. Relevant facts alert the developers to conditions and factors that have a bearing on the requirements.
+    The Scope of the Work: This section determines the boundaries of the business area to be studied and outlines how it fits into its environment.
+    Business Data Model: This section provides specification of the essential subject matter, business objects, entities, and classes that are germane to the the work that you are investigating. It might take the form of a first-cut class model, an entity-relationship model, or any other kind of data model.
+    The Scope of the Product: This section describes the scope of the product by means of detailed Product Use Cases.
+\section{Definições, acrônimos, abreviações}
+\section{Referências}
+\section{Visão Geral}
+
+\chapter{Descrição Geral}
+
+\section{Perspectiva do Produto}
+    \subsection{Interfaces do Sistema}
+    \subsection{Interfaces do Usuário}
+    \subsection{Interfaces do Hardware}
+    \subsection{Interfaces de Software}
+    \subsection{Interfaces de Comunicação}
+    \subsection{Memória}
+    \subsection{Operação}
+    \subsection{Adaptações necessárias ao ambiente  }
+
+
+
+\section{Funções do Produto}
+
+\section{Caracteristicas do Usuário}
+\section{Restrições}
+\section{Suposições e Dependências}
+
+\chapter{Requisitos Específicos}
+
+
+\appendix
+\chapter{qwerqwe}
+
+\printindex
+
+\end{document}

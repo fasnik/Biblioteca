@@ -174,20 +174,6 @@ Item {
                 spacing: 1
                 layoutDirection: Qt.LeftToRight
 
-                Button {
-                    id: btn_cancel
-                    text: qsTr("Cancelar")
-                    Layout.fillWidth: true
-                    Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
-                    highlighted: true
-
-                    Connections {
-                        target: btn_cancel
-                        function onClicked() {
-                            console.log("clicked")
-                        }
-                    }
-                }
 
                 Button {
                     id: btn_clean
@@ -222,7 +208,12 @@ Item {
                         function onClicked() {
 
                             backend.insertLeitor(
-                                        [txt_mat.text, txt_nome.text, txt_turma.text, txt_endereco.text, txt_foto.text, txt_email.text])
+                                        [txt_mat.text, 
+                                        txt_nome.text, 
+                                        txt_turma.text, 
+                                        txt_endereco.text, 
+                                        txt_foto.text, 
+                                        txt_email.text])
                             notify.open()
                         }
                     }
